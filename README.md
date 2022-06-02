@@ -12,7 +12,7 @@ Java 14.0.2
 
 - view the cluster nodes
 
-*from host*
+*from Container*
 
 ```bash
 [hostuser@host-machine]$ docker exec --interactive --tty zookeeper-cluster-3 bin/zkCli.sh -server :2181 config | grep ^server
@@ -31,20 +31,6 @@ Mode: leader
 ```
 
 ```bash
-[hostuser@host-machine]$ echo "stat" | nc localhost 32181
-Zookeeper version: 3.8.0-5a02a05eddb59aee6ac762f7ea82e92a68eb9c0f, built on 2022-02-25 08:49 UTC
-Clients:
- /172.19.0.1:36848[0](queued=0,recved=1,sent=0)
-
-Latency min/avg/max: 1/8.5/25
-Received: 7
-Sent: 6
-Connections: 1
-Outstanding: 0
-Zxid: 0x10000000e
-Mode: leader
-```
-```bash
 [hostuser@host-machine]$ docker exec zookeeper-cluster-3 bin/zkServer.sh status
 ZooKeeper JMX enabled by default
 Using config: /conf/zoo.cfg
@@ -58,15 +44,31 @@ Mode: follower
 ```
 
 ```bash
-[hostuser@host-machine]$ curl --silent http://localhost:28080/commands/stat | grep "server_state"
+root@zoo2:/apache-zookeeper-3.8.0-bin# wget --quiet --output-document=/dev/stdout http://localhost:8080/commands/stat | grep "server_state"
     "server_state" : "follower",
 ```
 This command requires configuration option `ZOO_4LW_COMMANDS_WHITELIST: "*"`
 
-*from Container*
+*from host*
 
 ```bash
-root@zoo2:/apache-zookeeper-3.8.0-bin# wget --quiet --output-document=/dev/stdout http://localhost:8080/commands/stat | grep "server_state"
+[hostuser@host-machine]$ echo "stat" | nc localhost 32181
+Zookeeper version: 3.8.0-5a02a05eddb59aee6ac762f7ea82e92a68eb9c0f, built on 2022-02-25 08:49 UTC
+Clients:
+ /172.19.0.1:36848[0](queued=0,recved=1,sent=0)
+
+Latency min/avg/max: 1/8.5/25
+Received: 7
+Sent: 6
+Connections: 1
+Outstanding: 0
+Zxid: 0x10000000e
+Mode: leader
+```
+This command requires configuration option `ZOO_4LW_COMMANDS_WHITELIST: "*"`
+
+```bash
+[hostuser@host-machine]$ curl --silent http://localhost:28080/commands/stat | grep "server_state"
     "server_state" : "follower",
 ```
 This command requires configuration option `ZOO_4LW_COMMANDS_WHITELIST: "*"`
