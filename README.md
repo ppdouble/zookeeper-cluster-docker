@@ -61,6 +61,7 @@ Mode: follower
 [hostuser@host-machine]$ curl --silent http://localhost:28080/commands/stat | grep "server_state"
     "server_state" : "follower",
 ```
+This command requires configuration option `ZOO_4LW_COMMANDS_WHITELIST: "*"`
 
 *from Container*
 
@@ -68,7 +69,7 @@ Mode: follower
 root@zoo2:/apache-zookeeper-3.8.0-bin# wget --quiet --output-document=/dev/stdout http://localhost:8080/commands/stat | grep "server_state"
     "server_state" : "follower",
 ```
-
+This command requires configuration option `ZOO_4LW_COMMANDS_WHITELIST: "*"`
 
 - enter into a cluster node and create a znode
 
@@ -106,14 +107,17 @@ hello
 
 `src/` is the souce code of Java api example.
 
-*Ref*
+*apiexmaple Ref*
 
 [zookeeper_api](https://www.tutorialspoint.com/zookeeper/zookeeper_api.htmh)
 
 [ZooKeeper-API-Java-Examples-Watcher](http://java.globinch.com/enterprise-services/zookeeper/apache-zookeeper-explained-tutorial-cases-zookeeper-java-api-examples/#ZooKeeper-API-Java-Examples-Watcher)
 
+[github code2](https://github.com/ashish-rane/Hadoop/blob/master/Zookeeper/Workspace/sample1/src/main/java/com/xpert/zookeeper/sample1/ZKClientTest.java)
+
+*watchclient Ref*
+
 [Official Java Example](https://zookeeper.apache.org/doc/r3.4.13/javaExample.html)
 
 [github code1](https://github.com/apache/zookeeper/blob/branch-3.8.0/zookeeper-docs/src/main/resources/markdown/javaExample.md#sc_design)
 
-[github code2](https://github.com/ashish-rane/Hadoop/blob/master/Zookeeper/Workspace/sample1/src/main/java/com/xpert/zookeeper/sample1/ZKClientTest.java)
