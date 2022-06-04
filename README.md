@@ -117,11 +117,5 @@ hello
 
 [java-zookeeper](https://www.baeldung.com/java-zookeeper)
 
-[github code1](https://github.com/ashish-rane/Hadoop/blob/master/Zookeeper/Workspace/sample1/src/main/java/com/xpert/zookeeper/sample1/ZKClientTest.java)
-
-*watchclient Ref*
-
-[3.8.0 Official Java Example](https://zookeeper.apache.org/doc/r3.8.0/javaExample.html)
-
-[github code2](https://github.com/apache/zookeeper/blob/branch-3.8.0/zookeeper-docs/src/main/resources/markdown/javaExample.md#sc_design)
+[github code](https://github.com/ashish-rane/Hadoop/blob/master/Zookeeper/Workspace/sample1/src/main/java/com/xpert/zookeeper/sample1/ZKClientTest.java)
 
